@@ -4,6 +4,14 @@ api documentation https://documenter.getpostman.com/view/30630244/2sA2rCTMKr#433
 
 The app is live on - https://reach-inbox-assessment.netlify.app
 
+Technologies used :-
+HTML, CSS, Javascript, React, Redux, Tailwind 
+
+Libraries used :-
+axios, redux toolkit, react-router-dom,
+react icons
+
+
 How to run the app:
 
 Step 1 - clone the repository 
