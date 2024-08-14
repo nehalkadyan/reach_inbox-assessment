@@ -12,13 +12,7 @@ Step 1 - clone the repository
 Step 2 - run command
   npm install
 
-Step 3 - go the the file userAuth.jsx in components folder
-
-Step - 4 Replace the given code (https://reach-inbox-assessment.netlify.app/) on line number 13 with "http://localhost:3000"
-
-This will make sure that after google-login the app will redirect to the port number where your application is running.
-
-Step 5 - run command to start server
+Step 3 - run command to start server
   npm start
 
   It will start the server and your app will be up and running.
