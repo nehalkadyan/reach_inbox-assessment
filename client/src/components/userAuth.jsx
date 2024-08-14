@@ -6,21 +6,17 @@ import { useNavigate } from "react-router-dom";
 // Fixed the import
 
 const UserAuth = ({ title, subtitle, btnText, btnCaption }) => {
-  const navigate = useNavigate();
-
   const handleSignUp = (e) => {
     e.preventDefault();
     try {
-      // Redirect to Google login URL
       window.location.href =
-        "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://localhost:3000/onebox";
+        "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://localhost:3000/";
     } catch (error) {
       console.error("Error during sign-up:", error);
-      // Handle the error (e.g., show an error message)
     }
   };
-
-  return (
+  //reach-inbox-assessement.netlify.app/
+  https: return (
     <div className="bg-mainBG min-h-screen flex flex-col items-center justify-between">
       {/* Logo */}
       <div className="p-2.5 flex justify-center border-b border-b-Border1 w-full">
