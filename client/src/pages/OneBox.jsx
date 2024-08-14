@@ -4,13 +4,29 @@ import Sidebar from "../components/Sidebar";
 import HeroSection from "../components/HeroSection";
 import { useDispatch, useSelector } from "react-redux";
 import { signInSuccessful } from "../redux/user/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import Rightbar from "../components/Rightbar";
 import MailBox from "../components/MailBox";
 
 const OneBox = () => {
+  const Navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get("token");
+
+  useEffect(() => {
+    if (!token) {
+      Navigate("/register");
+    }
+
+    if (token) {
+      localStorage.setItem("token", `Bearer ${token}`);
+      Navigate("/");
+    }
+  }, []);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,8 +55,7 @@ const OneBox = () => {
 
         dispatch(signInSuccessful({ user: userInfo, token }));
 
-        localStorage.setItem("jwtToken", token);
-        navigate("/onebox");
+        localStorage.setItem("token", `Bearer ${token}`);
       } catch (error) {
         console.error("Error decoding token:", error);
       }
@@ -48,7 +63,7 @@ const OneBox = () => {
   }, [dispatch, navigate]);
 
   useEffect(() => {
-    const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem("token");
 
     axios
       .get("https://hiring.reachinbox.xyz/api/v1/onebox/list", {
@@ -86,13 +101,13 @@ const OneBox = () => {
           toggleSidebar={toggleSidebar}
           className={`lg:${isExpanded ? "w-1/4" : "w-16"} ${
             themeState === "dark"
-              ? "bg-sidebarBG transition-all duration-300 ease-in-out border-Border1"
-              : "bg-[#FAFAFA] transition-all duration-300 ease-in-out border-Border1"
-          } transition-all duration-300 ease-in-out`}
+              ? "bg-sidebarBG  border-Border1"
+              : "bg-[#FAFAFA]  border-Border1"
+          } `}
         />
 
         <main
-          className={`flex-1 p-4 md:p-8 transition-all duration-300 ease-in-out ${
+          className={`flex-1 p-4 md:p-8  ${
             isExpanded ? "lg:ml-1/4" : "lg:ml-0"
           } ${
             themeState === "dark" ? "bg-black" : "bg-[#FAFAFA]"
