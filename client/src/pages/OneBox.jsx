@@ -16,16 +16,16 @@ const OneBox = () => {
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("token");
 
-  useEffect(() => {
-    if (!token) {
-      Navigate("/register");
-    }
+  // useEffect(() => {
+  //   if (!token) {
+  //     Navigate("/register");
+  //   }
 
-    if (token) {
-      localStorage.setItem("token", `Bearer ${token}`);
-      Navigate("/");
-    }
-  }, []);
+  //   if (token) {
+  //     localStorage.setItem("token", `Bearer ${token}`);
+  //     Navigate("/");
+  //   }
+  // }, []);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
