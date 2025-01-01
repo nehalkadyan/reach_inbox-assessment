@@ -27,8 +27,8 @@ const OneBox = () => {
   //   }
   // }, []);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
   const { themeState } = useSelector((state) => state.theme);
   const [isExpanded, setIsExpanded] = useState(false);
